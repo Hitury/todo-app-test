@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #19120d;
+  --color-shell: #19120d;
+  --color-panel: #261e19;
+  --color-raised: #261e19;
+  --color-hover: #262120;
+  --color-line: #2b2624;
+  --color-edge: #3a3330;
+
+  --color-ink: #ece7e2;
+  --color-dim: #9b918a;
+  --color-faint: #786b61;
+
+  --color-amber: #d69a6f;
+  --color-grass: #4fa65e;
+
+  --font-ui: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: transparent;
+    /* color: var(--color-ink); */
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+    border-radius: 12px;
+  }
+
+  input {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-amber) 35%, transparent);
+  }
+}
+
+/* Hairline amber scrollbar, like the reference chrome */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-faint) transparent;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--color-amber);
+  border-radius: 9999px;
+}
