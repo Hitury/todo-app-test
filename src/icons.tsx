@@ -45,3 +45,16 @@ export const MoonIcon = (p: SVGProps<SVGSVGElement>) => (
     <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.4 8.4 0 1 0 20 14.2Z" />
   </svg>
 );
+
+export const CalendarIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
+    <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+  </svg>
+);
+
+export const ChevronIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="m14.5 6-6 6 6 6" />
+  </svg>
+);

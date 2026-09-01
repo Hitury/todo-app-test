@@ -5,6 +5,7 @@ import { Sidebar } from "./components/Sidebar";
 import { TaskForm } from "./components/TaskForm";
 import { TitleBar } from "./components/TitleBar";
 import * as storage from "./storage";
+import { daysFromNow, groupByDue, nowTime, reorder, today } from "./tasks";
 import type { Edit, Task } from "./types";
 import "./App.css";
 
@@ -46,6 +47,18 @@ function App() {
   const removeTask = (id: number) =>
     saveTasks(tasks.filter((t) => t.id !== id));
 
+  // Clearing the date clears the time with it: a time alone means nothing.
+  const setDue = (id: number, due?: string, time?: string) =>
+    saveTasks(
+      tasks.map((t) =>
+        t.id === id ? { ...t, due, time: due ? time : undefined } : t,
+      ),
+    );
+
+  // Reorders the whole list, so the sections keep their relative order.
+  const moveTask = (id: number, targetId: number) =>
+    saveTasks(reorder(tasks, id, targetId));
+
   // Tasks key off of names to allow renames to carry over.
   const commitEdit = () => {
     if (!edit) return;
@@ -77,6 +90,19 @@ function App() {
     if (category === name) setCategory(next[0] ?? "");
   };
 
+  // Recomputed per render, never cached: an app left open overnight has to
+  // notice that "today" moved.
+  const now = today();
+  const soon = daysFromNow(1);
+  const visible = tasks.filter((t) => t.category === category);
+  const { due, rest, past } = groupByDue(visible, now, nowTime());
+  // Overdue sits last: greyed-out rows above live ones fight the hierarchy.
+  const sections: [string, Task[], boolean?][] = [
+    ["Due today", due],
+    ["Tasks", rest],
+    ["Past due", past, true],
+  ];
+
   return (
     <div className="flex h-screen w-full flex-col bg-void font-ui text-ink overflow-hidden rounded-[10px]">
       <TitleBar />
@@ -94,12 +120,28 @@ function App() {
           {category ? (
             <>
               <TaskForm onAdd={addTask} />
-              <Shelf
-                title={category}
-                tasks={tasks.filter((t) => t.category === category)}
-                onToggle={toggleTask}
-                onRemove={removeTask}
-              />
+              {visible.length === 0 ? (
+                <p className="px-2.5 py-3 text-center text-[11px] text-faint">
+                  Nothing here yet
+                </p>
+              ) : (
+                sections
+                  .filter(([, list]) => list.length > 0)
+                  .map(([title, list, muted]) => (
+                    <Shelf
+                      key={title}
+                      title={title}
+                      tasks={list}
+                      now={now}
+                      soon={soon}
+                      muted={muted}
+                      onToggle={toggleTask}
+                      onRemove={removeTask}
+                      onDue={setDue}
+                      onMove={moveTask}
+                    />
+                  ))
+              )}
             </>
           ) : (
             <p className="m-auto text-[11px] text-faint">

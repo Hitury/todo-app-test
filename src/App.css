@@ -96,3 +96,9 @@ html[data-theme="light"] {
   background: var(--color-amber);
   border-radius: 9999px;
 }
+
+/* The custom picker owns the calendar; the native time field only needs to
+   stop drawing its own button so it reads as plain text. */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
