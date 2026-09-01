@@ -46,8 +46,8 @@ function App() {
   return (
     <div className="flex h-screen w-full flex-col bg-void font-ui text-ink overflow-hidden rounded-[10px]">
       <header data-tauri-drag-region className="flex h-8 shrink-0 items-center justify-between border-b border-line bg-shell px-3 py-5">
-        <span data-tauri-drag-region className="pointer-events-none pl-1 text-[11px] font-semibold tracking-wide">
-          Todo <span className="text-amber">App</span>
+        <span data-tauri-drag-region className="pointer-events-none pl-1 text-[13px] font-bold tracking-wide">
+          Prism<span className="text-amber">Task</span>
         </span>
 
         <div className="flex items-center gap-0.5">
@@ -79,7 +79,7 @@ function App() {
                 }`}
               >
                 <span className="truncate">{c.name}</span>
-                <span className="text-[10px] text-faint">{c.count}</span>
+                {/* <span className="text-[10px] text-faint">{c.count}</span> */}
               </button>
             ))}
           </div>
@@ -98,7 +98,7 @@ function App() {
             </button>
           </div>
         </aside>
-        <main className="scroll-thin flex min-w-0 flex-1 flex-col gap-4.5 overflow-y-auto p-2.5">
+        <main className="scroll-thin flex min-w-0 flex-1 flex-col gap-4.5 overflow-y-auto p-3">
           <form
             onSubmit={addTask}
             className="flex h-7.5 shrink-0 items-center gap-2 rounded-lg border border-line bg-panel px-2.5 transition-colors focus-within:border-edge"
