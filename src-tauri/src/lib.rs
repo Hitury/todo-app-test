@@ -6,6 +6,7 @@ use tauri::{Manager, path::BaseDirectory};
 //     format!("Hello, {}! You've been greeted from Rust!", name)
 // }
 
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()

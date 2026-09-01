@@ -15,8 +15,36 @@
 
   --color-amber: #d69a6f;
   --color-grass: #4fa65e;
+  --color-on-amber: #19120d;
 
   --font-ui: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Light mode: same warm palette, lightness inverted. Swapped at runtime by
+   <ThemeProvider>, which sets data-theme on <html>. Unlayered so it wins
+   over the :root defaults Tailwind emits from @theme. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --color-void: #ece4da;
+  --color-shell: #ece4da;
+  --color-panel: #f8f3ee;
+  --color-raised: #f8f3ee;
+  --color-hover: #e0d6ca;
+  --color-line: #dcd1c4;
+  --color-edge: #b9ac9c;
+
+  --color-ink: #241c16;
+  --color-dim: #6b6058;
+  --color-faint: #8f8175;
+
+  --color-amber: #b26a37;
+  --color-grass: #3f8a4d;
+  --color-on-amber: #ffffff;
 }
 
 @layer base {
