@@ -26,7 +26,6 @@ export function ThemeProvider({
 }) {
   const [theme, setTheme] = useState<Theme>(initial);
 
-  // The palette lives in App.css; flipping this attribute swaps the tokens.
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);

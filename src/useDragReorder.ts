@@ -95,9 +95,7 @@ export function useDragReorder(
       window.removeEventListener("pointercancel", cancel);
     };
   }, [drag, ids, onMove]);
-
-  // Invert and play: transform only, so each row animates on the compositor
-  // without laying out a frame.
+  
   const order = ids.join();
   useLayoutEffect(() => {
     if (!before.current.size) return;

@@ -13,7 +13,6 @@ export function CategoryMenu({
 }) {
   return (
     <>
-      {/* Backdrop: click-outside without a document listener. */}
       <div
         className="fixed inset-0 z-10"
         onClick={onClose}
@@ -31,7 +30,7 @@ export function CategoryMenu({
             onRename();
             onClose();
           }}
-          className="block w-full px-2.5 py-1 text-left text-dim transition-colors hover:bg-hover hover:text-ink rounded-md"
+          className="block w-full px-2.5 py-1 text-left text-dim transition-colors hover:bg-hover/50 hover:text-ink rounded-md"
         >
           Rename
         </button>

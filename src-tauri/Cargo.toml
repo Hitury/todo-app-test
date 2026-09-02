@@ -1,7 +1,7 @@
 [package]
-name = "todo-app-test"
+name = "todo-app"
 version = "0.1.0"
-description = "A Tauri App"
+description = "Minimal Task Tracker"
 authors = ["you"]
 edition = "2021"
 

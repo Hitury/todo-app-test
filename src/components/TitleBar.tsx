@@ -6,8 +6,8 @@ const appWindow = getCurrentWindow();
 export function TitleBar() {
   return (
     <header data-tauri-drag-region className="flex h-8 shrink-0 items-center justify-between border-b border-line bg-shell px-3 py-5">
-      <span data-tauri-drag-region className="pointer-events-none pl-1 text-[13px] font-bold tracking-wide">
-        Prism<span className="text-amber">Task</span>
+      <span data-tauri-drag-region className="pointer-events-none pl-1 text-[12px] font-bold tracking-wide">
+        Todo <span className="text-amber">App</span>
       </span>
 
       <div className="flex items-center gap-0.5">

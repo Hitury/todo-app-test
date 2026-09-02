@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "todo-app-test",
+  "productName": "todo-app",
   "version": "0.1.0",
-  "identifier": "com.hitury.todo-app-test",
+  "identifier": "com.hitury.todo-app",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "todo-app-test",
+        "title": "Todo App",
         "width": 600,
         "height": 400,
         "decorations": false,

@@ -82,7 +82,7 @@ function App() {
     setCategory(name);
   };
 
-  // Takes the category's tasks with it — the menu item is red for a reason.
+  // Takes the category's tasks with it - the menu item is red for a reason.
   const removeCategory = (name: string) => {
     const next = categories.filter((c) => c !== name);
     saveCategories(next);
