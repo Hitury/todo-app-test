@@ -21,7 +21,6 @@ export function Sidebar({
 }) {
   const { theme, toggle } = useTheme();
 
-  // Same field creates and renames; only one row is ever editing.
   const editor = edit && (
     <input
       key="edit"
