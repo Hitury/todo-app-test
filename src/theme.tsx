@@ -43,7 +43,9 @@ export function ThemeProvider({
 }
 
 export function useTheme() {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error("useTheme must be used inside <ThemeProvider>");
-  return ctx;
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("useTheme used inside the incorrect context, make sure it's used within the ThemeContext.");
+  return context;
 }
+
+

@@ -6,12 +6,7 @@ const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
 const PANEL_W = 224; // w-56
 const PANEL_H = 268;
 
-// Keeps the panel on screen without letting an unknown viewport (innerWidth
-// reads 0 while a window is still laying out) shove it into the corner.
 const clamp = (v: number, max: number) => Math.max(8, max > 0 ? Math.min(v, max) : v);
-
-// "2026-09-02" parsed as local, not UTC — new Date("2026-09-02") is midnight
-// UTC and reads as the day before for anyone west of Greenwich.
 const parse = (due: string) => new Date(`${due}T00:00`);
 
 const label = (due: string, time?: string) => {
@@ -134,17 +129,12 @@ export function DueDate({
             <div className="mt-2 flex items-center gap-2 border-t border-line pt-2">
               <label className="flex flex-1 items-center gap-1.5 text-[10px] text-faint">
                 Time
-                {/* Uncontrolled on purpose. A half-typed time reads as "",
-                    so a controlled value would wipe the stored time between
-                    keystrokes and re-assign the field, resetting its segments
-                    — a two-digit hour could never land. */}
                 <input
                   type="time"
                   key={due}
                   defaultValue={time ?? ""}
                   disabled={!due}
                   onChange={(e) => e.target.value && onChange(due, e.target.value)}
-                  // Empty on the way out is a real clear; empty mid-edit is not.
                   onBlur={(e) => !e.target.value && time && onChange(due, undefined)}
                   className="w-full bg-transparent text-[10px] text-ink outline-none disabled:text-faint"
                 />
