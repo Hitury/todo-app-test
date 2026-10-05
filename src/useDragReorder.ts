@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 
-const DURATION = 400;
+const DURATION = 300;
 
 const spring = () => {
   const decay = 6.5;
@@ -14,7 +14,7 @@ const spring = () => {
         (Math.cos(freq * t) + (decay / freq) * Math.sin(freq * t));
     return y.toFixed(4);
   });
-  points[points.length - 1] = "1"; // land exactly on target
+  points[points.length - 1] = "1"; 
   return `linear(${points.join(",")})`;
 };
 

@@ -1,4 +1,4 @@
-import { MoonIcon, ThemeIcon } from "../icons";
+import { MoonIcon, ThemeIcon, SettingsIcon } from "../icons";
 import { useTheme } from "../theme";
 import type { Edit } from "../types";
 
@@ -78,7 +78,7 @@ export function Sidebar({
         )}
       </div>
 
-      <div className="flex items-center gap-2 p-1">
+      <div className="flex items-center justify-between gap-2 p-1">
         <button
           onClick={toggle}
           aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
@@ -89,6 +89,13 @@ export function Sidebar({
           ) : (
             <MoonIcon className="h-3.5 w-3.5" />
           )}
+        </button>
+
+        <button
+          aria-label={"Open the settings menu"}
+          className="grid h-6 w-6 shrink-0 place-items-center rounded text-faint transition-colors hover:bg-panel hover:text-ink"
+        >
+         <SettingsIcon className="h-3.5 w-3.5" />
         </button>
       </div>
     </aside>
