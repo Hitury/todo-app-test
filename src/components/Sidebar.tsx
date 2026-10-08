@@ -1,6 +1,9 @@
 import { MoonIcon, ThemeIcon, SettingsIcon } from "../icons";
 import { useTheme } from "../theme";
 import type { Edit } from "../types";
+import { Window } from '@tauri-apps/api/window';
+
+const appWindow = new Window('settings-menu');
 
 export function Sidebar({
   categories,
@@ -92,6 +95,7 @@ export function Sidebar({
         </button>
 
         <button
+          onClick={openSettings}
           aria-label={"Open the settings menu"}
           className="grid h-6 w-6 shrink-0 place-items-center rounded text-faint transition-colors hover:bg-panel hover:text-ink"
         >
